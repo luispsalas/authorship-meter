@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+node_modules/
+.vscode/
+.idea/
+
+# Workspace-internal context — not part of the published project
+CONTEXT.md

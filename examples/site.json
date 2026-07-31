@@ -1,0 +1,20 @@
+{
+  "$schema": "../authorship.schema.json",
+  "version": "1.0",
+  "subject": {
+    "name": "AI Metrics Catalog",
+    "type": "site",
+    "url": "https://luispsalas.github.io/ai-governance-scorecard/",
+    "date": "2026-06-18"
+  },
+  "stages": {
+    "conception":   { "level": 1, "note": "Eleven-layer taxonomy developed by the author over several weeks." },
+    "structure":    { "level": 2, "note": "Card schema written by the author, field list refined in dialogue." },
+    "production":   { "level": 4, "note": "HTML, CSS and JS generated from a written spec and reviewed file by file." },
+    "curation":     { "level": 2, "note": "All 42 metric rows written and edited by hand." },
+    "verification": { "level": 1, "note": "Author checked every formula and tooling reference." }
+  },
+  "tools": ["Claude Opus 5"],
+  "declared_by": "Luis Salas",
+  "method": "llm-assisted"
+}

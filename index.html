@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorship Meter</title>
+<style>
+  :root {
+    --fg: #1c1c1e; --muted: #6a6a70; --bg: #fafafa; --card: #fff; --line: #e3e3e6;
+    --human: #2e7d6f; --ai: #6b5bd2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg: #ececf1; --muted: #9a9aa3; --bg: #101012; --card: #17171a; --line: #303036;
+            --human: #4db6a3; --ai: #9b8cf0; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 3rem 1.25rem 5rem;
+    background: var(--bg); color: var(--fg);
+    font: 15px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 46rem; margin: 0 auto; }
+  h1 { font-size: 2rem; letter-spacing: -.02em; margin: 0 0 .4rem; }
+  h2 { font-size: 1.05rem; letter-spacing: -.01em; margin: 3rem 0 1rem; }
+  .lede { color: var(--muted); font-size: 1.05rem; margin: 0 0 2.5rem; max-width: 34rem; }
+  .row { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+  .row > * { flex: 1 1 20rem; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  th, td { text-align: left; padding: .5rem .7rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88em;
+         background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: .1em .35em; }
+  pre { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+        padding: 1rem; overflow-x: auto; font-size: 12.5px; line-height: 1.55; }
+  pre code { background: none; border: 0; padding: 0; }
+  .swatch { display: inline-block; width: .7em; height: .7em; border-radius: 2px; vertical-align: baseline; }
+  footer { margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--line);
+           color: var(--muted); font-size: 13px; }
+</style>
+<script src="authorship-meter.js" defer></script>
+</head>
+<body>
+<main>
+
+  <h1>Authorship Meter</h1>
+  <p class="lede">
+    A disclosure widget for showing, at a glance, how much of a piece of work came
+    from a person and how much came from a model — and at which stage.
+  </p>
+
+  <authorship-meter>
+    <script type="application/json">
+    {
+      "version": "1.0",
+      "subject": { "name": "AI Metrics Catalog", "type": "site" },
+      "stages": {
+        "conception":   { "level": 1, "note": "Eleven-layer taxonomy developed by the author over several weeks." },
+        "structure":    { "level": 2, "note": "Card schema written by the author, field list refined in dialogue." },
+        "production":   { "level": 4, "note": "HTML, CSS and JS generated from a written spec and reviewed file by file." },
+        "curation":     { "level": 2, "note": "All 42 metric rows written and edited by hand." },
+        "verification": { "level": 1, "note": "Author checked every formula and tooling reference." }
+      },
+      "tools": ["Claude Opus 5"],
+      "declared_by": "Luis Salas",
+      "method": "llm-assisted"
+    }
+    </script>
+  </authorship-meter>
+
+  <h2>Two more profiles</h2>
+  <div class="row">
+    <authorship-meter>
+      <script type="application/json">
+      {
+        "version": "1.0",
+        "subject": { "name": "Essay — what governance owes to explanation", "type": "article" },
+        "stages": {
+          "conception":   { "level": 1, "note": "Argument developed from the author's consulting practice." },
+          "structure":    { "level": 2, "note": "Author's outline, reordered once after a model critique." },
+          "production":   { "level": 3, "note": "Roughly half the paragraphs drafted by model, half typed by hand." },
+          "curation":     { "level": 1, "note": "Every paragraph rewritten or cut before publication." },
+          "verification": { "level": 1, "note": "Author checked all citations and quoted sources." }
+        },
+        "tools": ["Claude Opus 5"],
+        "method": "self-declared"
+      }
+      </script>
+    </authorship-meter>
+
+    <authorship-meter>
+      <script type="application/json">
+      {
+        "version": "1.0",
+        "subject": { "name": "Short film — generated sequence study", "type": "video" },
+        "stages": {
+          "conception":   { "level": 2, "note": "Premise and mood set by the director; shot ideas expanded with a model." },
+          "structure":    { "level": 3, "note": "Shot list negotiated across several rounds of proposals." },
+          "production":   { "level": 5, "note": "All footage generated; no filmed or hand-animated material." },
+          "curation":     { "level": 2, "note": "Director selected 14 takes from roughly 200 and cut the sequence." },
+          "verification": { "level": 2, "note": "Director reviewed every frame for artifacts before release." }
+        },
+        "tools": ["Veo", "Claude Opus 5"],
+        "method": "self-declared"
+      }
+      </script>
+    </authorship-meter>
+  </div>
+
+  <h2>Compact badge</h2>
+  <p style="color:var(--muted);font-size:13.5px;margin-top:-.4rem">
+    For footers and article bylines. The breakdown expands on click.
+  </p>
+  <authorship-meter compact style="max-width:22rem">
+    <script type="application/json">
+    {
+      "version": "1.0",
+      "subject": { "name": "This page", "type": "site" },
+      "stages": {
+        "conception":   { "level": 2, "note": "Metric model proposed in dialogue, decided by the author." },
+        "structure":    { "level": 3, "note": "Stage and level scheme worked out jointly." },
+        "production":   { "level": 4, "note": "Component and page generated to an agreed spec." },
+        "curation":     { "level": 2, "note": "Author reviewed and directed every revision." },
+        "verification": { "level": 2, "note": "Rendering and arithmetic checked in-browser before release." }
+      },
+      "tools": ["Claude Opus 5"],
+      "declared_by": "Luis Salas",
+      "method": "llm-assisted"
+    }
+    </script>
+  </authorship-meter>
+
+  <h2>The five stages</h2>
+  <table>
+    <thead><tr><th>Stage</th><th>Question it answers</th></tr></thead>
+    <tbody>
+      <tr><td>Conception</td><td>Whose idea, thesis, or angle is this?</td></tr>
+      <tr><td>Structure</td><td>Who decided the architecture, outline, or composition?</td></tr>
+      <tr><td>Production</td><td>Who made the artifact itself — prose, code, pixels, audio?</td></tr>
+      <tr><td>Curation</td><td>Who selected, cut, revised, and shaped the result?</td></tr>
+      <tr><td>Verification</td><td>Who fact-checked, tested, and signed off?</td></tr>
+    </tbody>
+  </table>
+
+  <h2>The five levels</h2>
+  <table>
+    <thead><tr><th>Level</th><th>Name</th><th>AI share</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><span class="swatch" style="background:var(--human)"></span> Human only</td><td>0%</td></tr>
+      <tr><td>2</td><td><span class="swatch" style="background:var(--human);opacity:.55"></span> Human-led, AI-assisted</td><td>25%</td></tr>
+      <tr><td>3</td><td><span class="swatch" style="background:var(--muted)"></span> Co-created</td><td>50%</td></tr>
+      <tr><td>4</td><td><span class="swatch" style="background:var(--ai);opacity:.55"></span> AI-led, human-directed</td><td>75%</td></tr>
+      <tr><td>5</td><td><span class="swatch" style="background:var(--ai)"></span> AI-generated</td><td>100%</td></tr>
+    </tbody>
+  </table>
+  <p style="color:var(--muted);font-size:13.5px">
+    Verification may not be declared level 5 — a human always signs off.
+  </p>
+
+  <h2>Using it</h2>
+  <pre><code>&lt;script src="authorship-meter.js" defer&gt;&lt;/script&gt;
+
+&lt;authorship-meter src="authorship.json"&gt;&lt;/authorship-meter&gt;</code></pre>
+  <p style="color:var(--muted);font-size:13.5px">
+    Or inline the declaration in a <code>&lt;script type="application/json"&gt;</code> child.
+    Restyle with <code>--am-human</code>, <code>--am-ai</code>, <code>--am-bg</code>,
+    <code>--am-line</code>, <code>--am-radius</code>.
+  </p>
+
+  <footer>
+    Spec v1.0 ·
+    <a href="https://github.com/luispsalas/authorship-meter/blob/main/SPEC.md" style="color:inherit">SPEC.md</a> ·
+    <a href="https://github.com/luispsalas/authorship-meter/blob/main/ASSESSMENT.md" style="color:inherit">ASSESSMENT.md</a> ·
+    <a href="https://github.com/luispsalas/authorship-meter" style="color:inherit">Repository</a><br>
+    A declaration is a claim by its declarer. This is a disclosure format, not a quality mark.
+  </footer>
+
+</main>
+</body>
+</html>

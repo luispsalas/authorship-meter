@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://luispsalas.github.io/authorship-meter/authorship.schema.json",
+  "title": "Authorship Meter Declaration",
+  "description": "Declares how a work was made across five process stages, on a five-level human-to-AI scale.",
+  "type": "object",
+  "required": ["version", "subject", "stages"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": {
+      "type": "string",
+      "description": "Spec version this declaration follows.",
+      "enum": ["1.0"]
+    },
+    "subject": {
+      "type": "object",
+      "required": ["name", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "type": {
+          "type": "string",
+          "enum": ["article", "site", "code", "video", "audio", "image", "deck", "dataset", "other"]
+        },
+        "url": { "type": "string", "format": "uri" },
+        "date": { "type": "string", "format": "date" }
+      }
+    },
+    "stages": {
+      "type": "object",
+      "required": ["conception", "structure", "production", "curation", "verification"],
+      "additionalProperties": false,
+      "properties": {
+        "conception": { "$ref": "#/$defs/stage" },
+        "structure": { "$ref": "#/$defs/stage" },
+        "production": { "$ref": "#/$defs/stage" },
+        "curation": { "$ref": "#/$defs/stage" },
+        "verification": {
+          "allOf": [
+            { "$ref": "#/$defs/stage" },
+            {
+              "properties": {
+                "level": {
+                  "maximum": 4,
+                  "description": "Verification ceiling: level 5 is not declarable. A human always signs off."
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "weights": {
+      "type": "object",
+      "description": "Optional per-stage weight overrides. Omit for equal weighting.",
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "type": "string",
+          "enum": ["equal", "editorial", "engineering", "creative", "custom"]
+        },
+        "conception": { "$ref": "#/$defs/weight" },
+        "structure": { "$ref": "#/$defs/weight" },
+        "production": { "$ref": "#/$defs/weight" },
+        "curation": { "$ref": "#/$defs/weight" },
+        "verification": { "$ref": "#/$defs/weight" }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "description": "Models or tools that materially contributed.",
+      "items": { "type": "string" }
+    },
+    "declared_by": { "type": "string" },
+    "method": {
+      "type": "string",
+      "enum": ["self-declared", "llm-assisted", "third-party"],
+      "default": "self-declared"
+    }
+  },
+  "$defs": {
+    "stage": {
+      "type": "object",
+      "required": ["level"],
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "1 Human only · 2 Human-led, AI-assisted · 3 Co-created · 4 AI-led, human-directed · 5 AI-generated"
+        },
+        "note": {
+          "type": "string",
+          "description": "One concrete sentence describing what happened at this stage.",
+          "maxLength": 240
+        }
+      }
+    },
+    "weight": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 5
+    }
+  }
+}

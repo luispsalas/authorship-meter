@@ -1,0 +1,19 @@
+{
+  "$schema": "../authorship.schema.json",
+  "version": "1.0",
+  "subject": {
+    "name": "Essay — what governance owes to explanation",
+    "type": "article",
+    "date": "2026-05-04"
+  },
+  "stages": {
+    "conception":   { "level": 1, "note": "Argument developed from the author's consulting practice." },
+    "structure":    { "level": 2, "note": "Author's outline, reordered once after a model critique." },
+    "production":   { "level": 3, "note": "Roughly half the paragraphs drafted by model, half typed by hand." },
+    "curation":     { "level": 1, "note": "Every paragraph rewritten or cut by the author before publication." },
+    "verification": { "level": 1, "note": "Author checked all citations and quoted sources." }
+  },
+  "tools": ["Claude Opus 5"],
+  "declared_by": "Luis Salas",
+  "method": "self-declared"
+}

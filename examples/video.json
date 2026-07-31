@@ -1,0 +1,19 @@
+{
+  "$schema": "../authorship.schema.json",
+  "version": "1.0",
+  "subject": {
+    "name": "Short film — generated sequence study",
+    "type": "video",
+    "date": "2026-07-11"
+  },
+  "stages": {
+    "conception":   { "level": 2, "note": "Premise and mood set by the director; shot ideas expanded with a model." },
+    "structure":    { "level": 3, "note": "Shot list negotiated across several rounds of proposals." },
+    "production":   { "level": 5, "note": "All footage generated; no filmed or hand-animated material." },
+    "curation":     { "level": 2, "note": "Director selected 14 takes from roughly 200 and cut the sequence." },
+    "verification": { "level": 2, "note": "Director reviewed every frame for artifacts before release." }
+  },
+  "tools": ["Veo", "Claude Opus 5"],
+  "declared_by": "Luis Salas",
+  "method": "self-declared"
+}
