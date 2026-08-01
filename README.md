@@ -10,10 +10,7 @@ stage of the process.
 
 ## Why
 
-"Made with AI" is not a useful disclosure. Almost everything is, now. The question
-readers actually have is *which part* — was the idea yours and the code generated,
-or the reverse? A single percentage cannot answer that, and a percentage invented
-by the declarer is not evidence of anything.
+"Made with AI" is not a useful disclosure. The question is *which part* and to what extent? A single percentage cannot answer that, and a percentage invented by the declarer is not evidence of anything.
 
 The Authorship Meter answers it with five stages and five named levels. You declare
 where the work sits at each stage; the widget derives the bar. The mapping is fixed
