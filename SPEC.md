@@ -70,15 +70,18 @@ ai_share  = (composite − 1) / 4 × 100
 Weights default to `1` for every stage and may be overridden per project type
 (see §6). The bar renders `ai_share` on the right, the remainder on the left.
 
-### 4.1 Level → AI share (single stage)
+### 4.1 Level → share (single stage)
 
-| Level | AI share |
-|---|---|
-| 1 | 0% |
-| 2 | 25% |
-| 3 | 50% |
-| 4 | 75% |
-| 5 | 100% |
+Human and AI share are complementary and always sum to 100%. Both are surfaced to
+the reader; neither end of the scale is privileged.
+
+| Level | Human share | AI share |
+|---|---|---|
+| 1 | 100% | 0% |
+| 2 | 75% | 25% |
+| 3 | 50% | 50% |
+| 4 | 25% | 75% |
+| 5 | 0% | 100% |
 
 ### 4.2 Composite → band label
 

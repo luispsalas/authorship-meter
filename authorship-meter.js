@@ -187,6 +187,7 @@
 
     #root = this.attachShadow({ mode: 'open' });
     #data = null;
+    #open = null; // null = derive from attributes; boolean = user has toggled
 
     connectedCallback() {
       const inline = this.querySelector('script[type="application/json"]');
@@ -204,8 +205,9 @@
 
     attributeChangedCallback(name, prev, next) {
       if (prev === next || !this.#data) return;
-      if (name === 'src') this.#load(next);
-      else this.#render();
+      if (name === 'src') return this.#load(next);
+      if (name === 'open' || name === 'compact') this.#open = null; // re-derive default
+      this.#render();
     }
 
     /** Set the declaration programmatically. */
@@ -241,8 +243,10 @@
         return this.#fail(e.message);
       }
 
-      const compact = this.hasAttribute('compact');
-      const open = this.hasAttribute('open') || !compact;
+      const open =
+        this.#open !== null
+          ? this.#open
+          : this.hasAttribute('open') || !this.hasAttribute('compact');
 
       const stages = STAGES.map(([key, label]) => {
         const st = d.stages[key];
@@ -292,7 +296,7 @@
         </div>`;
 
       this.#root.querySelector('.toggle').addEventListener('click', () => {
-        this.toggleAttribute('open');
+        this.#open = !open;
         this.#render();
       });
     }

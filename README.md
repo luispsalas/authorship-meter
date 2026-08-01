@@ -24,22 +24,37 @@ and published, so the headline number cannot be tuned into something flattering.
 
 **Five levels**, each declared per stage:
 
-| Level | Name | AI share |
-|---|---|---|
-| 1 | Human only | 0% |
-| 2 | Human-led, AI-assisted | 25% |
-| 3 | Co-created | 50% |
-| 4 | AI-led, human-directed | 75% |
-| 5 | AI-generated | 100% |
+| Level | Name | Human share | AI share |
+|---|---|---|---|
+| 1 | Human only | 100% | 0% |
+| 2 | Human-led, AI-assisted | 75% | 25% |
+| 3 | Co-created | 50% | 50% |
+| 4 | AI-led, human-directed | 25% | 75% |
+| 5 | AI-generated | 0% | 100% |
 
 The composite is the (optionally weighted) mean of the five levels, mapped to a
 band: *Human authored* → *Human-led, AI-assisted* → *Co-created* → *AI-led,
 human-directed* → *AI-generated, human-verified*.
 
-**One hard rule:** verification may never be declared level 5. A human always signs
-off. Work with no human verification step cannot use this meter.
+**One hard rule:** verification may never be declared level 5. **A human always signs
+off. Work with no human verification step cannot use this meter.**
 
 Full definitions, calibration rules, and weight profiles are in [SPEC.md](SPEC.md).
+
+---
+
+## What this is not
+
+- Not a quality signal. Human-authored does not mean good.
+- Not a copyright or licensing claim.
+- Not independently verifiable. A declaration is a claim by its declarer; the
+  `method` field records how it was arrived at, not that it is true.
+- Not a token count. Where a real countable quantity exists, put it in a note
+  rather than converting it into a level and calling it measured.
+
+For file-level provenance (C2PA Content Credentials and similar), use those
+standards alongside this one — they record what happened to a file, this records
+how a work was made.
 
 ---
 
@@ -114,21 +129,6 @@ Under-disclosure is the failure mode that costs trust.
 
 Declarations validate against [`authorship.schema.json`](authorship.schema.json).
 Examples live in [`examples/`](examples/).
-
----
-
-## What this is not
-
-- Not a quality signal. Human-authored does not mean good.
-- Not a copyright or licensing claim.
-- Not independently verifiable. A declaration is a claim by its declarer; the
-  `method` field records how it was arrived at, not that it is true.
-- Not a token count. Where a real countable quantity exists, put it in a note
-  rather than converting it into a level and calling it measured.
-
-For file-level provenance (C2PA Content Credentials and similar), use those
-standards alongside this one — they record what happened to a file, this records
-how a work was made.
 
 ---
 
