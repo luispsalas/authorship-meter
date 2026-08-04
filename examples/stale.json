@@ -1,0 +1,19 @@
+{
+  "$schema": "../authorship.schema.json",
+  "version": "1.1",
+  "subject": {
+    "name": "Example — declaration predating a revision",
+    "type": "article",
+    "version": "2026-05-01",
+    "updated": "2026-07-20"
+  },
+  "assessed_at": "2026-05-01",
+  "stages": {
+    "conception":   { "level": 1, "note": "Demonstrates SPEC §6.3 staleness detection: subject.updated is later than assessed_at." },
+    "structure":    { "level": 1, "note": "Not a real work — for testing the component's stale-declaration banner." },
+    "production":   { "level": 3, "note": "See authorship-meter.js isStale()." },
+    "curation":     { "level": 1, "note": "" },
+    "verification": { "level": 1, "note": "" }
+  },
+  "method": "self-declared"
+}

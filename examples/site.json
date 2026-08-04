@@ -1,12 +1,16 @@
 {
   "$schema": "../authorship.schema.json",
-  "version": "1.0",
+  "version": "1.1",
   "subject": {
     "name": "AI Metrics Catalog",
     "type": "site",
     "url": "https://luispsalas.github.io/ai-governance-scorecard/",
-    "date": "2026-06-18"
+    "source": "https://github.com/luispsalas/ai-governance-scorecard",
+    "date": "2026-06-18",
+    "version": "2026-06-18",
+    "updated": "2026-06-18"
   },
+  "assessed_at": "2026-06-18",
   "stages": {
     "conception":   { "level": 1, "note": "Eleven-layer taxonomy developed by the author over several weeks." },
     "structure":    { "level": 2, "note": "Card schema written by the author, field list refined in dialogue." },

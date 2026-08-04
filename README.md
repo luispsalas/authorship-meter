@@ -43,6 +43,29 @@ Full definitions, calibration rules, and weight profiles are in [SPEC.md](SPEC.m
 
 ---
 
+## Provenance, always visible
+
+A declaration is a public claim, so every rendered meter shows — without the reader
+digging — the **method** (`self-declared` / `llm-assisted` / `third-party`), the
+**declarer**, and the **assessed date**, plus two links: one to this standard, one
+to the specific declaration behind the claim. If the work changes after it was
+assessed, the meter says so rather than showing a confidently stale number.
+
+`llm-assisted` is the encouraged default for the first stage of adoption: an LLM
+runs [ASSESSMENT.md](ASSESSMENT.md) and produces the declaration, the author
+confirms or contests it. An outside assessor blunts the self-crediting bias that
+comes with declaring your own work.
+
+**Placement** (for the author's own content): a one-line reference in the intro —
+*"This piece carries an [Authorship Meter](#authorship) declaration"* — and the full
+meter at the foot of the content, under an `#authorship` anchor. Non-invasive, two
+touchpoints, nothing else required in the body.
+
+Full detail — required fields, staleness rules, the revision model, placement
+standard — is in [SPEC.md §6–8](SPEC.md#6-provenance-and-validity).
+
+---
+
 ## What this is not
 
 - Not a quality signal. Human-authored does not mean good.
@@ -72,8 +95,14 @@ Or inline the declaration, which avoids a fetch and works from `file://`:
 <authorship-meter compact>
   <script type="application/json">
   {
-    "version": "1.0",
-    "subject": { "name": "My article", "type": "article" },
+    "version": "1.1",
+    "subject": {
+      "name": "My article",
+      "type": "article",
+      "source": "https://github.com/me/my-article",
+      "version": "2026-08-04"
+    },
+    "assessed_at": "2026-08-04",
     "stages": {
       "conception":   { "level": 1, "note": "Argument is the author's own." },
       "structure":    { "level": 2, "note": "Outline reordered after a model critique." },

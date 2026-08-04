@@ -138,6 +138,9 @@ Output the JSON, then verify:
 - [ ] Every note is one sentence and names something concrete.
 - [ ] `tools` lists models that materially contributed.
 - [ ] `method` is `llm-assisted` when you produced this declaration.
+- [ ] `assessed_at` is today's date, and `subject.version` identifies the state of
+      the work you assessed (a commit SHA, semver, or date) — SPEC §6.3.
+- [ ] `subject.source` points to where the work and this declaration live, if known.
 - [ ] Any non-default `weights` are stated with the profile name.
 
 Then report the composite, the AI share, and the band label — and say in one line
@@ -158,8 +161,15 @@ and tool references myself."
 
 ```json
 {
-  "version": "1.0",
-  "subject": { "name": "AI Metrics Catalog", "type": "site" },
+  "version": "1.1",
+  "subject": {
+    "name": "AI Metrics Catalog",
+    "type": "site",
+    "source": "https://github.com/luispsalas/ai-governance-scorecard",
+    "version": "2026-06-18",
+    "updated": "2026-06-18"
+  },
+  "assessed_at": "2026-06-18",
   "stages": {
     "conception":   { "level": 1, "note": "Eleven-layer taxonomy developed by the author over several weeks." },
     "structure":    { "level": 2, "note": "Card schema written by the author, field list refined in dialogue." },
@@ -168,6 +178,7 @@ and tool references myself."
     "verification": { "level": 1, "note": "Author checked every formula and tooling reference." }
   },
   "tools": ["Claude Opus 5"],
+  "declared_by": "Luis Salas",
   "method": "llm-assisted"
 }
 ```

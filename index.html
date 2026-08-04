@@ -48,12 +48,25 @@
     A disclosure widget for showing, at a glance, how much of a piece of work came
     from a person and how much came from a model — and at which stage.
   </p>
+  <p class="lede" style="margin-top:-1.7rem;font-size:.95rem">
+    This page carries its own <a href="#authorship" style="color:inherit">Authorship
+    Meter declaration</a>, placed per §8 — intro line here, the meter itself at the
+    foot of the content.
+  </p>
 
   <authorship-meter>
     <script type="application/json">
     {
-      "version": "1.0",
-      "subject": { "name": "AI Metrics Catalog", "type": "site" },
+      "version": "1.1",
+      "subject": {
+        "name": "AI Metrics Catalog",
+        "type": "site",
+        "url": "https://luispsalas.github.io/ai-governance-scorecard/",
+        "source": "https://github.com/luispsalas/ai-governance-scorecard",
+        "version": "2026-06-18",
+        "updated": "2026-06-18"
+      },
+      "assessed_at": "2026-06-18",
       "stages": {
         "conception":   { "level": 1, "note": "Eleven-layer taxonomy developed by the author over several weeks." },
         "structure":    { "level": 2, "note": "Card schema written by the author, field list refined in dialogue." },
@@ -73,8 +86,14 @@
     <authorship-meter>
       <script type="application/json">
       {
-        "version": "1.0",
-        "subject": { "name": "Essay — what governance owes to explanation", "type": "article" },
+        "version": "1.1",
+        "subject": {
+          "name": "Essay — what governance owes to explanation",
+          "type": "article",
+          "version": "2026-05-04",
+          "updated": "2026-05-04"
+        },
+        "assessed_at": "2026-05-04",
         "stages": {
           "conception":   { "level": 1, "note": "Argument developed from the author's consulting practice." },
           "structure":    { "level": 2, "note": "Author's outline, reordered once after a model critique." },
@@ -91,8 +110,14 @@
     <authorship-meter>
       <script type="application/json">
       {
-        "version": "1.0",
-        "subject": { "name": "Short film — generated sequence study", "type": "video" },
+        "version": "1.1",
+        "subject": {
+          "name": "Short film — generated sequence study",
+          "type": "video",
+          "version": "2026-07-11",
+          "updated": "2026-07-11"
+        },
+        "assessed_at": "2026-07-11",
         "stages": {
           "conception":   { "level": 2, "note": "Premise and mood set by the director; shot ideas expanded with a model." },
           "structure":    { "level": 3, "note": "Shot list negotiated across several rounds of proposals." },
@@ -107,15 +132,53 @@
     </authorship-meter>
   </div>
 
+  <h2>Provenance and a stale declaration</h2>
+  <p style="color:var(--muted);font-size:13.5px;margin-top:-.4rem">
+    Method, declarer, and assessed date are always visible — never only in the
+    expanded breakdown. When the work has changed since assessment, the meter
+    says so instead of showing a confidently stale number.
+  </p>
+  <authorship-meter style="max-width:22rem">
+    <script type="application/json">
+    {
+      "version": "1.1",
+      "subject": {
+        "name": "Example — declaration predating a revision",
+        "type": "article",
+        "version": "2026-05-01",
+        "updated": "2026-07-20"
+      },
+      "assessed_at": "2026-05-01",
+      "stages": {
+        "conception":   { "level": 1, "note": "Illustrates SPEC §6.3: subject.updated is later than assessed_at." },
+        "structure":    { "level": 1, "note": "Not a real work — demonstrates the stale-declaration banner." },
+        "production":   { "level": 3, "note": "See isStale() in authorship-meter.js." },
+        "curation":     { "level": 1, "note": "" },
+        "verification": { "level": 1, "note": "" }
+      },
+      "method": "self-declared"
+    }
+    </script>
+  </authorship-meter>
+
   <h2>Compact badge</h2>
   <p style="color:var(--muted);font-size:13.5px;margin-top:-.4rem">
-    For footers and article bylines. The breakdown expands on click.
+    For footers and article bylines. The breakdown expands on click. This one is
+    also this page's own declaration — the anchor the intro line above points to.
   </p>
+  <div id="authorship"></div>
   <authorship-meter compact style="max-width:22rem">
     <script type="application/json">
     {
-      "version": "1.0",
-      "subject": { "name": "This page", "type": "site" },
+      "version": "1.1",
+      "subject": {
+        "name": "This page",
+        "type": "site",
+        "source": "https://github.com/luispsalas/authorship-meter",
+        "version": "2026-07-30",
+        "updated": "2026-07-30"
+      },
+      "assessed_at": "2026-07-30",
       "stages": {
         "conception":   { "level": 2, "note": "Metric model proposed in dialogue, decided by the author." },
         "structure":    { "level": 3, "note": "Stage and level scheme worked out jointly." },
@@ -168,7 +231,7 @@
   </p>
 
   <footer>
-    Spec v1.0 ·
+    Spec v1.1 ·
     <a href="https://github.com/luispsalas/authorship-meter/blob/main/SPEC.md" style="color:inherit">SPEC.md</a> ·
     <a href="https://github.com/luispsalas/authorship-meter/blob/main/ASSESSMENT.md" style="color:inherit">ASSESSMENT.md</a> ·
     <a href="https://github.com/luispsalas/authorship-meter" style="color:inherit">Repository</a><br>

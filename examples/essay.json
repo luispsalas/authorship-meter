@@ -1,11 +1,14 @@
 {
   "$schema": "../authorship.schema.json",
-  "version": "1.0",
+  "version": "1.1",
   "subject": {
     "name": "Essay — what governance owes to explanation",
     "type": "article",
-    "date": "2026-05-04"
+    "date": "2026-05-04",
+    "version": "2026-05-04",
+    "updated": "2026-05-04"
   },
+  "assessed_at": "2026-05-04",
   "stages": {
     "conception":   { "level": 1, "note": "Argument developed from the author's consulting practice." },
     "structure":    { "level": 2, "note": "Author's outline, reordered once after a model critique." },

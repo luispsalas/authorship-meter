@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://luispsalas.github.io/authorship-meter/authorship.schema.json",
   "title": "Authorship Meter Declaration",
-  "description": "Declares how a work was made across five process stages, on a five-level human-to-AI scale.",
+  "description": "Declares how a work was made across five process stages, on a five-level human-to-AI scale. Spec v1.1 adds provenance (assessed_at, subject.version) required for a declaration to be valid under SPEC.md §6.3.",
   "type": "object",
   "required": ["version", "subject", "stages"],
   "additionalProperties": false,
@@ -11,7 +11,7 @@
     "version": {
       "type": "string",
       "description": "Spec version this declaration follows.",
-      "enum": ["1.0"]
+      "enum": ["1.0", "1.1"]
     },
     "subject": {
       "type": "object",
@@ -23,9 +23,36 @@
           "type": "string",
           "enum": ["article", "site", "code", "video", "audio", "image", "deck", "dataset", "other"]
         },
-        "url": { "type": "string", "format": "uri" },
-        "date": { "type": "string", "format": "date" }
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Canonical location of the work — where a reader finds it."
+        },
+        "source": {
+          "type": "string",
+          "format": "uri",
+          "description": "Where the work and its declaration live (repo or project page). The per-instance declaration link (SPEC §6.2)."
+        },
+        "version": {
+          "type": "string",
+          "description": "The state of the work this declaration describes — a git SHA, semver, or date. Required for v1.1 validity (scoped, SPEC §6.3)."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date",
+          "description": "When the work was last materially changed. Compared against assessed_at for staleness detection (SPEC §6.3)."
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "v1.0 field: date the work was completed. Superseded by subject.version/updated; kept for backward compatibility."
+        }
       }
+    },
+    "assessed_at": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO date the declaration was made or last revised. Required for v1.1 validity (current, SPEC §6.3). Label as \"Assessed\", never \"Validated\" (SPEC §6.4)."
     },
     "stages": {
       "type": "object",
@@ -72,13 +99,50 @@
       "description": "Models or tools that materially contributed.",
       "items": { "type": "string" }
     },
-    "declared_by": { "type": "string" },
+    "declared_by": {
+      "type": "string",
+      "description": "Who made this declaration — the accountable owner. Recommended: surfaced on the card, not buried (SPEC §6.1)."
+    },
     "method": {
       "type": "string",
       "enum": ["self-declared", "llm-assisted", "third-party"],
-      "default": "self-declared"
+      "default": "self-declared",
+      "description": "How the declaration was arrived at. The primary trust signal — surfaced, not buried (SPEC §6.1). llm-assisted is the encouraged first-stage default (SPEC §1 principle 6)."
+    },
+    "history": {
+      "type": "array",
+      "description": "Prior declarations, newest first, kept when the work is re-assessed after a material change (SPEC §7).",
+      "items": {
+        "type": "object",
+        "required": ["assessed_at", "reason"],
+        "additionalProperties": true,
+        "properties": {
+          "assessed_at": { "type": "string", "format": "date" },
+          "band": { "type": "string" },
+          "composite": { "type": "number", "minimum": 1, "maximum": 5 },
+          "reason": {
+            "type": "string",
+            "description": "What changed and why this entry was superseded."
+          }
+        }
+      }
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "version": { "const": "1.1" } }
+      },
+      "then": {
+        "required": ["assessed_at"],
+        "properties": {
+          "subject": {
+            "required": ["name", "type", "version"]
+          }
+        }
+      }
+    }
+  ],
   "$defs": {
     "stage": {
       "type": "object",

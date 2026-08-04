@@ -1,6 +1,6 @@
 /*!
  * Authorship Meter — a disclosure widget for human/AI contribution.
- * Spec v1.0 · self-contained custom element · no dependencies.
+ * Spec v1.1 · self-contained custom element · no dependencies.
  *
  *   <authorship-meter src="authorship.json"></authorship-meter>
  *
@@ -10,10 +10,14 @@
  *
  * Attributes:
  *   src      — URL of a declaration JSON file
- *   compact  — render the badge only; stages expand on click
+ *   compact  — hide the stage breakdown by default; expands on click.
+ *              Provenance (method, declarer, date) and the two links are
+ *              always shown, in both modes — SPEC.md §6.1: not buried.
  *   open     — start with stage detail expanded (full mode default)
  */
 (() => {
+  const METER_HOME = 'https://luispsalas.github.io/authorship-meter/';
+
   const STAGES = [
     ['conception', 'Conception', 'Whose idea or thesis'],
     ['structure', 'Structure', 'Who shaped the architecture'],
@@ -45,12 +49,20 @@
     creative: { conception: 2, structure: 1, production: 2, curation: 1, verification: 1 },
   };
 
+  // Method is the primary trust signal (SPEC §6.1) — labels spell out what
+  // each tier means rather than reusing the raw enum value.
+  const METHOD_LABELS = {
+    'self-declared': 'Self-declared',
+    'llm-assisted': 'LLM-assisted',
+    'third-party': 'Third-party assessed',
+  };
+
   const esc = (s) =>
     String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
   /** Composite, AI share and band label for a declaration. Exported for reuse. */
   function score(decl) {
-    const w = { ...PROFILES.equal, ...PROFILES[decl.weights?.profile] , ...decl.weights };
+    const w = { ...PROFILES.equal, ...PROFILES[decl.weights?.profile], ...decl.weights };
     let num = 0, den = 0;
     for (const [key] of STAGES) {
       const level = decl.stages?.[key]?.level;
@@ -65,10 +77,33 @@
     return { composite, aiShare, humanShare: 100 - aiShare, band };
   }
 
+  /**
+   * True when the work changed after it was last assessed (SPEC §6.3).
+   * Requires both dates; silently false (not stale) if either is missing —
+   * absence of a date is a validity gap (§6.3 "scoped"/"current"), not itself
+   * evidence of staleness.
+   */
+  function isStale(decl) {
+    const assessed = decl.assessed_at;
+    const updated = decl.subject?.updated;
+    if (!assessed || !updated) return false;
+    const a = new Date(assessed), u = new Date(updated);
+    if (isNaN(a) || isNaN(u)) return false;
+    return u > a;
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return null;
+    const d = new Date(/^\d{4}-\d{2}-\d{2}$/.test(iso) ? `${iso}T00:00:00` : iso);
+    if (isNaN(d)) return iso;
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
   const CSS = `
     :host {
       --am-human: #2e7d6f;
       --am-ai: #6b5bd2;
+      --am-warn: #b3660a;
       --am-fg: #1c1c1e;
       --am-muted: #6a6a70;
       --am-bg: #ffffff;
@@ -87,6 +122,7 @@
       :host {
         --am-human: #4db6a3;
         --am-ai: #9b8cf0;
+        --am-warn: #e3a63f;
         --am-fg: #ececf1;
         --am-muted: #9a9aa3;
         --am-bg: #17171a;
@@ -135,11 +171,52 @@
     .legend .h { color: var(--am-human); }
     .legend .a { color: var(--am-ai); }
 
+    /* Provenance — SPEC §6.1: method, declarer, date. Always visible,
+       compact or not, open or not. Not buried. */
+    .prov {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px 10px;
+      margin-top: 11px;
+      font-size: 11.5px;
+      color: var(--am-muted);
+    }
+    .prov .method {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 99px;
+      background: var(--am-line);
+      color: var(--am-fg);
+      font-weight: 600;
+      font-size: 10.5px;
+      letter-spacing: .01em;
+    }
+    .prov .stale {
+      color: var(--am-warn);
+      font-weight: 600;
+    }
+
+    /* The two links — SPEC §6.2: method link (constant) + declaration link (per-instance) */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 14px;
+      margin-top: 7px;
+      font-size: 11.5px;
+    }
+    .links a {
+      color: var(--am-muted);
+      text-decoration: none;
+    }
+    .links a:hover { color: var(--am-fg); text-decoration: underline; }
+
     .toggle {
       appearance: none;
       background: none;
       border: 0;
-      margin: 10px 0 0;
+      margin: 11px 0 0;
       padding: 0;
       font: inherit;
       font-size: 12px;
@@ -173,6 +250,18 @@
       border-top: 1px solid var(--am-line);
       font-size: 11.5px; color: var(--am-muted);
     }
+
+    /* Standing disclaimer — SPEC §10: a claim by its declarer, not an
+       endorsement. Always visible per §6.1. */
+    .disclaimer {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--am-line);
+      font-size: 10.5px;
+      color: var(--am-muted);
+      font-style: italic;
+    }
+
     .err { color: #b3261e; font-size: 12.5px; }
 
     @media (max-width: 420px) {
@@ -267,16 +356,39 @@
           </div>`;
       }).join('');
 
+      // Provenance row — method, declarer, assessed date. Always rendered
+      // (SPEC §6.1: "not buried"), independent of compact/open state.
+      const methodKey = d.method || 'self-declared';
+      const methodLabel = METHOD_LABELS[methodKey] || esc(methodKey);
+      const stale = isStale(d);
+      const assessedText = d.assessed_at
+        ? `Assessed ${esc(fmtDate(d.assessed_at))}`
+        : 'Assessed: not recorded';
+
+      const prov = `
+        <div class="prov">
+          <span class="method" title="How this declaration was arrived at (SPEC §6.1).">${esc(methodLabel)}</span>
+          ${d.declared_by ? `<span class="declarer">${esc(d.declared_by)}</span>` : ''}
+          <span class="assessed">${assessedText}</span>
+          ${stale ? `<span class="stale" title="The work changed after this declaration was assessed.">⚠ predates current version</span>` : ''}
+        </div>`;
+
+      // The two links — SPEC §6.2. Method link is constant; declaration
+      // link is per-instance and only shown when the declaration provides it.
+      const links = `
+        <div class="links">
+          <a href="${esc(METER_HOME)}" target="_blank" rel="noopener">About this scale ↗</a>
+          ${d.subject?.source ? `<a href="${esc(d.subject.source)}" target="_blank" rel="noopener">How this was assessed ↗</a>` : ''}
+        </div>`;
+
       const meta = [
         d.tools?.length ? `Tools: ${d.tools.map(esc).join(', ')}` : '',
-        d.declared_by ? esc(d.declared_by) : '',
-        d.method ? esc(d.method.replace('-', ' ')) : '',
         d.weights?.profile && d.weights.profile !== 'equal' ? `${esc(d.weights.profile)} weighting` : '',
       ].filter(Boolean).join(' · ');
 
       this.#root.innerHTML = `
         <style>${CSS}</style>
-        <div class="card" role="group" aria-label="Authorship: ${esc(s.band)}, ${s.aiShare}% AI contribution">
+        <div class="card" role="group" aria-label="Authorship: ${esc(s.band)}, ${s.aiShare}% AI contribution, ${esc(methodLabel)}">
           <p class="eyebrow">Authorship</p>
           <p class="band">${esc(s.band)}</p>
           ${d.subject?.name ? `<p class="subject">${esc(d.subject.name)}</p>` : ''}
@@ -288,11 +400,14 @@
             <span class="h">Human <b>${s.humanShare}%</b></span>
             <span class="a"><b>${s.aiShare}%</b> AI</span>
           </div>
+          ${prov}
+          ${links}
           <button class="toggle" type="button" aria-expanded="${open}">
             ${open ? 'Hide breakdown' : 'How was this made?'}
           </button>
           ${open ? `<div class="stages">${stages}</div>` : ''}
           ${open && meta ? `<p class="meta">${meta}</p>` : ''}
+          <p class="disclaimer">A declaration is a claim by its declarer — not independently verified, not an endorsement.</p>
         </div>`;
 
       this.#root.querySelector('.toggle').addEventListener('click', () => {
@@ -303,6 +418,7 @@
   }
 
   AuthorshipMeter.score = score;
+  AuthorshipMeter.isStale = isStale;
   AuthorshipMeter.LEVELS = LEVELS;
 
   if (!customElements.get('authorship-meter')) {

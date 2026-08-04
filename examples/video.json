@@ -1,11 +1,14 @@
 {
   "$schema": "../authorship.schema.json",
-  "version": "1.0",
+  "version": "1.1",
   "subject": {
     "name": "Short film — generated sequence study",
     "type": "video",
-    "date": "2026-07-11"
+    "date": "2026-07-11",
+    "version": "2026-07-11",
+    "updated": "2026-07-11"
   },
+  "assessed_at": "2026-07-11",
   "stages": {
     "conception":   { "level": 2, "note": "Premise and mood set by the director; shot ideas expanded with a model." },
     "structure":    { "level": 3, "note": "Shot list negotiated across several rounds of proposals." },
