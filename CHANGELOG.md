@@ -87,10 +87,3 @@ Initial public release.
 - `SPEC.md`, `ASSESSMENT.md` (LLM assessment instructions), `authorship.schema.json`,
   a demo `index.html`, and example declarations.
 - Published to GitHub Pages.
-
-<!-- No git tags cut yet; links point at the defining commits. Swap for
-release/compare links if versions are tagged later. -->
-[Unreleased]: https://github.com/luispsalas/authorship-meter/compare/a768929...HEAD
-[1.1.0]: https://github.com/luispsalas/authorship-meter/commit/290f0d4
-[1.0.1]: https://github.com/luispsalas/authorship-meter/commit/9612795
-[1.0.0]: https://github.com/luispsalas/authorship-meter/commit/3e6fff8
