@@ -69,7 +69,38 @@ Recommended: `subject.source` (the repo, so the declaration link in §6.2 resolv
 
 ---
 
-## 4. Files to add
+## 3a. Recommended standard — host the declaration, reference it (the "badge" model)
+
+Established across the first adoptions (live-visuals, ai-governance-scorecard,
+Aug 2026). Treat the declaration as an **independent, hosted artifact** — like a
+Credly badge — that the project *references*, rather than embedding the widget in
+the product. This keeps the declaration in one place (no drift), keeps built apps
+untouched, and works the same for a repo whose only face is a README.
+
+**Where the declaration lives:** on the meter's own site, not in the consuming repo.
+```
+authorship-meter/declarations/<project>.json   ← the declaration (single source of truth)
+authorship-meter/declarations/<project>.html   ← the "badge" page: renders the meter + a back-link
+```
+Served at `https://luispsalas.github.io/authorship-meter/declarations/<project>.html`.
+
+**How the project references it — two touchpoints, both links, nothing embedded:**
+1. **README** — an intro line near the top and an `## Authorship` section at the foot,
+   both pointing at the hosted badge page (see §5).
+2. **The product itself** — a single unobtrusive reference link (e.g. in the footer)
+   to the same badge page. Not the full widget.
+
+**Do not** duplicate `authorship.json` into the consuming repo, and **do not** hardcode
+the reading (band or %) in README or product text — link to the badge page and let it
+be the one source of truth (it re-renders live from the JSON; a hardcoded number goes
+stale, the exact failure the meter exists to prevent).
+
+The embed-in-product approach in §4 below remains valid for a standalone content page
+that *is* the deliverable, but the hosted-badge model above is the default.
+
+---
+
+## 4. Files to add (embed-in-product variant)
 
 For a project with a real HTML surface (a built site, a Pages deploy, any static
 host):
