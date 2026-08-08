@@ -16,7 +16,7 @@
  *   open     — start with stage detail expanded (full mode default)
  */
 (() => {
-  const METER_HOME = 'https://luispsalas.github.io/authorship-meter/';
+  const METER_HOME = 'https://github.com/luispsalas/authorship-meter';
 
   const STAGES = [
     ['conception', 'Conception', 'Whose idea or thesis'],
