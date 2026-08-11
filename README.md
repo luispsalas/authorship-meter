@@ -36,8 +36,9 @@ The composite is the (optionally weighted) mean of the five levels, mapped to a
 band: *Human authored* → *Human-led, AI-assisted* → *Co-created* → *AI-led,
 human-directed* → *AI-generated, human-verified*.
 
-**One hard rule:** verification may never be declared level 5. **A human always signs
-off. Work with no human verification step cannot use this meter.**
+**One hard rule:** someone has to be accountable for checking the work. There's no
+"fully AI" option for Verification — **a person always signs off, and work with no
+human verification step can't use this meter.**
 
 Full definitions, calibration rules, and weight profiles are in [SPEC.md](SPEC.md).
 

@@ -68,8 +68,9 @@ Each stage takes exactly one level.
 
 ### 3.1 Rule — verification ceiling
 
-**Verification may not be declared level 5.** A human always signs off. Work with
-no human verification step cannot use this meter.
+**Someone has to be accountable for checking the work.** There's no "fully AI"
+option here — a person always signs off, so Verification never reaches level 5. Work
+with no human verification step cannot use this meter.
 
 Level 4 on verification is permitted but should be rare — it means automated checks
 did the work and a human set them up.

@@ -89,7 +89,7 @@ level whose description fits the evidence.
 | 2 | Declarer verified, using AI to surface candidates for checking. |
 | 3 | Verification shared between automated and manual checks. |
 | 4 | Automated checks did the verifying; declarer designed and read them. |
-| 5 | **Not declarable.** See the verification ceiling in SPEC §3.1. |
+| 5 | **Not available.** Someone must be accountable for checking the work — there's no "fully AI" option; a person always signs off (SPEC §3.1). |
 
 ---
 
