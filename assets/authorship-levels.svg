@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 244" width="480" height="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="The five levels and their human/AI share. Level 1 Human only: 100% human, 0% AI. Level 2 Human-led, AI-assisted: 75% human, 25% AI. Level 3 Co-created: 50% human, 50% AI. Level 4 AI-led, human-directed: 25% human, 75% AI. Level 5 AI-generated: 0% human, 100% AI.">
+  <!-- legend -->
+  <rect x="200" y="8" width="13" height="13" rx="2" fill="#2f9e78"/>
+  <text x="219" y="19" font-size="12" fill="#888888">Human</text>
+  <rect x="286" y="8" width="13" height="13" rx="2" fill="#7d5fe0"/>
+  <text x="305" y="19" font-size="12" fill="#888888">AI</text>
+
+  <!-- Level 1 -->
+  <text x="10" y="52" font-size="12.5" fill="#888888"><tspan font-weight="700" fill="#8a8a8a">1</tspan>  Human only</text>
+  <rect x="200" y="40" width="270" height="22" fill="#2f9e78"/>
+  <text x="335" y="55" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">100%</text>
+
+  <!-- Level 2 -->
+  <text x="10" y="90" font-size="12.5" fill="#888888"><tspan font-weight="700" fill="#8a8a8a">2</tspan>  Human-led, AI-assisted</text>
+  <rect x="200" y="78" width="202.5" height="22" fill="#2f9e78"/>
+  <rect x="402.5" y="78" width="67.5" height="22" fill="#7d5fe0"/>
+  <text x="301" y="93" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">75%</text>
+  <text x="436" y="93" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">25%</text>
+
+  <!-- Level 3 -->
+  <text x="10" y="128" font-size="12.5" fill="#888888"><tspan font-weight="700" fill="#8a8a8a">3</tspan>  Co-created</text>
+  <rect x="200" y="116" width="135" height="22" fill="#2f9e78"/>
+  <rect x="335" y="116" width="135" height="22" fill="#7d5fe0"/>
+  <text x="267.5" y="131" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">50%</text>
+  <text x="402.5" y="131" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">50%</text>
+
+  <!-- Level 4 -->
+  <text x="10" y="166" font-size="12.5" fill="#888888"><tspan font-weight="700" fill="#8a8a8a">4</tspan>  AI-led, human-directed</text>
+  <rect x="200" y="154" width="67.5" height="22" fill="#2f9e78"/>
+  <rect x="267.5" y="154" width="202.5" height="22" fill="#7d5fe0"/>
+  <text x="233.75" y="169" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">25%</text>
+  <text x="368.75" y="169" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">75%</text>
+
+  <!-- Level 5 -->
+  <text x="10" y="204" font-size="12.5" fill="#888888"><tspan font-weight="700" fill="#8a8a8a">5</tspan>  AI-generated</text>
+  <rect x="200" y="192" width="270" height="22" fill="#7d5fe0"/>
+  <text x="335" y="207" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">100%</text>
+
+  <!-- axis hint -->
+  <text x="200" y="232" font-size="10.5" fill="#9aa0aa">more human</text>
+  <text x="470" y="232" font-size="10.5" fill="#9aa0aa" text-anchor="end">more AI</text>
+  <line x1="200" y1="226" x2="470" y2="226" stroke="#9aa0aa" stroke-opacity="0.25" stroke-width="1"/>
+</svg>
