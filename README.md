@@ -6,12 +6,9 @@ the stages of the process, not a single guessed number.
 
 ![Illustrative example reading: headline band "Co-created", Human 50% / AI 50%, above five separately assessed stages — Conception, Structure, Production, Curation, Verification — each drawn as its own teal-human / violet-AI split bar, so the mix at each stage is visible rather than folded into one guess.](assets/authorship-example.svg)
 
-It's a voluntary disclosure, not a regulatory filing — see [What this is *not*](#what-this-is-not).
+**[Live demo](https://luispsalas.github.io/authorship-meter/)** · [Add it to your project](#add-it-to-your-project) · [Spec](SPEC.md)
 
-**[Live demo](https://luispsalas.github.io/authorship-meter/)** · [Why it matters](#why-it-matters) · [How it works](#how-it-works) · [Add it to your project](#add-it-to-your-project) · [Spec](SPEC.md)
-
-> **Work in progress.** The format is at spec v1.1 and still evolving with real-world
-> use. Feedback is welcome — see [CHANGELOG.md](CHANGELOG.md) for what's changed.
+> **Work in progress** — a voluntary disclosure, not a regulatory filing (see [what this is *not*](#what-this-is-not)). The format is at spec v1.1 and still evolving; changes are logged in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
