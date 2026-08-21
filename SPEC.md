@@ -322,15 +322,66 @@ headline. Custom weights are permitted; undisclosed custom weights are not.
   how it was arrived at; `assessed_at` records when. Neither proves it true (§6.4).
 - **Not a token count.** Where a real countable quantity exists (lines of code,
   say), report it in a note. Do not convert it into a level and call it measured.
+- **Not a watermark or a detector.** It doesn't scan an artifact and output a
+  probability. It's a structured assessment — usually LLM-produced against the
+  criteria in `ASSESSMENT.md`, then confirmed by a human — not a machine signal
+  extracted from the content itself (§11.2).
+- **Not a regulatory compliance mechanism.** It does not satisfy the EU AI Act's
+  Article 50 or equivalent transparency mandates — those require a machine-embedded,
+  provider-side mark, and a declaration under this format is a voluntary,
+  self-authored disclosure instead. It addresses transparency and accountability at
+  a process level regulation doesn't reach; it is not a substitute for the
+  compliance mechanism itself (§11.3).
 
 ---
 
-## 11. Relationship to other schemes
+## 11. Relationship to other schemes and regulation
+
+### 11.1 File-level provenance (C2PA)
 
 The declaration is intended to be compatible with, not a replacement for,
 provenance standards that operate at the file level (C2PA Content Credentials and
 similar). Those record *what happened to a file*; this records *how a work was
-made*. A future revision may define a mapping between the two.
+made*. A future revision may define a mapping between the two — see the project
+backlog for a proposed `subject.c2pa_manifest`-style reference field.
+
+### 11.2 Watermarking and detection
+
+AI providers are increasingly embedding machine-detectable signals into their
+output — an invisible statistical mark in generated text, a signed provenance chain
+on generated files — so that a system can check whether content passed through a
+specific model. This is **detection**, and it answers a different question than
+this format does:
+
+- **Detection** — *"did this artifact pass through model X?"* Narrow, objective,
+  machine-checked, per-artifact, and specific to one provider's tooling. It cannot
+  say what proportion of the work a tool produced, at which stage, or whether a
+  person directed it — a detector can't distinguish "the model wrote a paragraph"
+  from "the model proofread one," and it says nothing at all about Conception,
+  Structure, or Curation.
+- **Disclosure** (this format) — *"how was this work made, by whom, at which stage,
+  to what degree?"* Broad, human-declared, structured across five stages, and
+  tool-agnostic.
+
+The two are **complementary, not competing**. A detection hit can *corroborate*
+part of a declaration — for example, confirming a specific tool was involved in
+Production — but it cannot replace the process account a declaration provides, and
+its absence proves nothing (a person may have used a tool that leaves no detectable
+signal, or edited the output past the point of detection). Where both exist for the
+same work, treat detection as objective, per-artifact evidence and the declaration
+as the human-declared narrative that gives it context.
+
+### 11.3 Not regulatory compliance
+
+Provider-side watermarking exists substantially to satisfy transparency regulation
+(the EU AI Act's Article 50 and similar). That is compliance infrastructure
+implemented by an AI provider on its own output, embedded at generation time. A
+declaration under this format is different in kind: it is voluntary, self-authored,
+and produced after the fact by the work's creator. **It does not satisfy Article 50
+or equivalent obligations, and should never be represented as doing so.** What it
+does is address transparency and accountability at a process level — whose idea,
+who structured it, who checked it — that regulation aimed at marking AI output does
+not reach.
 
 ---
 

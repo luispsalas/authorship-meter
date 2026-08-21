@@ -1,10 +1,14 @@
 # Authorship Meter
 
-An honest, at-a-glance disclosure of **how much of a piece of work came from a
-person and how much from an AI model** — broken down by stage of the process, not
-reduced to a single number.
+An at-a-glance scale for how much of a piece of work came from a person and how
+much from an AI model — built from a structured, LLM-assisted assessment across
+the stages of the process, not a single guessed number.
 
-**[Live demo](https://luispsalas.github.io/authorship-meter/)** · [How it works](#how-it-works) · [Add it to your project](#add-it-to-your-project) · [Spec](SPEC.md)
+![Illustrative example reading: band "Co-created", Human 50% / AI 50%, built from five separately assessed stages — Conception, Structure, Production, Curation, Verification, each shown as its own small indicator rather than folded into one guess.](assets/authorship-example.svg)
+
+It's a voluntary disclosure, not a regulatory filing — see [What this is *not*](#what-this-is-not).
+
+**[Live demo](https://luispsalas.github.io/authorship-meter/)** · [Why it matters](#why-it-matters) · [How it works](#how-it-works) · [Add it to your project](#add-it-to-your-project) · [Spec](SPEC.md)
 
 > **Work in progress.** The format is at spec v1.1 and still evolving with real-world
 > use. Feedback is welcome — see [CHANGELOG.md](CHANGELOG.md) for what's changed.
@@ -13,22 +17,60 @@ reduced to a single number.
 
 ## Why it matters
 
-"Made with AI" has stopped meaning anything — almost everything is, now. The
-question a reader actually has is **which part, and how much?** Was the idea yours
-and the code generated, or the other way round? Did a person check the facts, or did
-the model mark its own homework?
+"Made with AI" is not a useful disclosure. The question is *which part*, and to
+what extent? A single percentage can't answer that, and a percentage someone
+invented about their own work isn't evidence of anything.
 
-A single percentage can't answer that, and a percentage someone made up about their
-own work isn't evidence of anything. The Authorship Meter fixes both problems:
+The Authorship Meter answers it differently: an LLM assesses the work against
+fixed, published criteria — one of five stages, one of five levels — and the
+person who made it confirms or corrects the result. The percentage isn't
+asserted; it's *derived* from that assessment by a fixed rule, so nobody can
+quietly tune a number until it looks flattering.
 
 - **It discloses by stage**, so "human idea, AI production, human editing" is
   something you can actually express — not flattened into one blurry number.
-- **It's honest by construction.** You pick from five named levels at each stage; the
-  percentages are *derived* from those choices by a fixed, published rule. Nobody can
-  quietly tune a number until it looks good.
+- **It's grounded in an assessment, not an assertion.** Levels are chosen against
+  written criteria (see [ASSESSMENT.md](ASSESSMENT.md)), not picked freely — the
+  same process run twice should land on the same answer.
 
-It's a **disclosure**, not a grade. A human-authored work isn't automatically better
-than an AI-assisted one — the point is to say plainly how something was made.
+It's a **disclosure**, not a grade. A human-authored work isn't automatically
+better than an AI-assisted one — the point is to say plainly how something was
+made.
+
+### Where this sits next to watermarking and provenance efforts
+
+Anthropic now watermarks Claude-generated text, and file provenance standards
+(C2PA) are seeing wider adoption. Those are real, valuable steps — and they
+answer a narrower question than this format does: *did a tool touch this*, not
+*how much of the thinking was a person's, and at which stage*. A detector can
+confirm a model was involved in Production; it can't say whose idea it was, who
+structured it, or who checked it before it shipped. The Authorship Meter is meant
+to sit **above** that layer — a human-declared account that a detection signal
+can corroborate, but never replace. Full comparison, including why this isn't a
+substitute for regulatory compliance, is in
+[SPEC §11](SPEC.md#11-relationship-to-other-schemes-and-regulation).
+
+---
+
+## What this is *not*
+
+- **Not a quality signal.** Human-authored doesn't mean good.
+- **Not a copyright or licensing claim.**
+- **Not independently verified.** A declaration is a claim by its author; `method`
+  records *how* it was arrived at, not that it's true —
+  [assessed, not validated](SPEC.md#64-assessed-not-validated).
+- **Not a token count.** Where a real countable quantity exists, note it in words
+  rather than dressing it up as a measured level.
+- **Not a watermark or a detector.** It doesn't scan content and output a
+  probability — it's an assessment against written criteria, confirmed by a
+  person, not a signal extracted from the artifact itself.
+- **Not a regulatory compliance mechanism.** A provider-side watermark can
+  satisfy transparency mandates like the EU AI Act's Article 50; a voluntary
+  disclosure under this format does not, and shouldn't be represented as if it
+  did.
+
+Full comparison with C2PA-style file provenance and provider watermarking is in
+[SPEC §11](SPEC.md#11-relationship-to-other-schemes-and-regulation).
 
 ---
 
@@ -87,18 +129,27 @@ Real projects carrying a live declaration:
 
 ## Add it to your project
 
-The recommended pattern is the **"badge" model** — treat the declaration like a
-Credly badge: an independent, hosted page that your project *links to*, rather than
-something baked into the product.
+The whole flow is designed to be handed to an LLM — ideally one already working
+in your project, with access to its history — in three steps:
 
-1. **Assess the work** and produce an `authorship.json` (see [below](#getting-a-declaration-assessed)).
-2. **Host it** as a small page that renders the meter (the declaration lives in one
-   place, so it can never drift out of sync).
-3. **Reference it** from your README (a line up top, a short "Authorship" section at
-   the foot) and with one link on the product itself.
+1. **Assess.** Give it [ASSESSMENT.md](ASSESSMENT.md) plus an account of how the
+   work was made, or point it at the project's own git history. It produces a
+   valid `authorship.json` and explains its reasoning, following the same
+   evidence questions, per-stage level anchors, and calibration rules every
+   declaration is held to. `method: llm-assisted` is the encouraged default — the
+   model assesses, you confirm or correct.
+2. **Confirm.** Read the per-stage levels and notes. When in doubt the model
+   should lean toward the higher (more AI) level — under-disclosing costs trust;
+   correct anything that reads wrong before it ships.
+3. **Publish the badge.** Host the declaration on a small page that renders the
+   meter, and reference it — a line near the top of your README, a short
+   "Authorship" section at the foot, one link on the product itself. This is the
+   **"badge" model**: an independent, hosted page your project *links to*, like a
+   Credly badge, rather than something baked into the product. Step-by-step,
+   including the ready-to-copy files, is in [INTEGRATION.md](INTEGRATION.md).
 
-Full step-by-step, including the ready-to-copy files, is in
-[INTEGRATION.md](INTEGRATION.md).
+Declarations validate against [`authorship.schema.json`](authorship.schema.json);
+worked examples are in [`examples/`](examples/).
 
 ### The component
 
@@ -127,34 +178,18 @@ page styles out. For scripting, `AuthorshipMeter.score(declaration)` returns
 
 ---
 
-## Getting a declaration assessed
+## A short glossary
 
-[ASSESSMENT.md](ASSESSMENT.md) is written to be handed to an LLM. Give it the file
-plus an account of how the work was made — ideally from the project's own history —
-and it produces a valid declaration and explains its reasoning. It includes the
-evidence questions to ask, the per-stage level anchors, calibration rules, and a
-worked example.
+Several of these words now describe specific, different things. Worth being precise.
 
-The rule that matters most: **when in doubt, pick the higher (more AI) level.**
-Under-disclosing is the failure that costs trust; over-disclosing just looks modest.
-
-Declarations validate against [`authorship.schema.json`](authorship.schema.json);
-examples are in [`examples/`](examples/).
-
----
-
-## What this is *not*
-
-- **Not a quality signal.** Human-authored doesn't mean good.
-- **Not a copyright or licensing claim.**
-- **Not independently verified.** A declaration is a claim by its author; `method`
-  records *how* it was arrived at, not that it's true.
-- **Not a token count.** Where a real countable quantity exists, note it in words
-  rather than dressing it up as a measured level.
-
-For file-level provenance (C2PA Content Credentials and similar), use those standards
-alongside this one — they record what happened to a *file*; this records how a *work*
-was made.
+| Term | What it means here |
+|---|---|
+| **Disclosure** (this format) | A human-declared, structured account of how a work was made — assessed against written criteria, then confirmed by a person. |
+| **Detection** | A machine check for whether an artifact carries a specific provider's signal (e.g. a Claude watermark). Answers *"was a tool involved,"* not *"how much, at which stage."* |
+| **Watermark** | An invisible signal a model embeds in its own output at generation time, so a detector can later check for it. Provider-specific; degrades under heavy editing or paraphrase. |
+| **Provenance (C2PA)** | A signed, file-level record of *what happened to a file* — created, edited, by which tool. Complementary to this format, not a substitute for it — see [SPEC §11](SPEC.md#11-relationship-to-other-schemes-and-regulation). |
+| **Assessed, not validated** | `assessed_at` is when a declaration was made or revised — not proof anyone independently checked it. "Validated" is reserved for genuine third-party review. |
+| **Compliance** | Satisfying a legal transparency mandate (e.g. the EU AI Act's Article 50), which requires a provider-embedded mark. A voluntary declaration under this format is not that, and doesn't claim to be. |
 
 ---
 

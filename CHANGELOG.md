@@ -22,6 +22,16 @@ spec, schema, or level→share mapping.
 - `feedback/` — field reports from real integrations, starting with
   `live-visuals-integration.md`.
 
+- SPEC §11 now covers watermarking/detection and regulatory compliance alongside
+  C2PA, split into 11.1–11.3. Two new "what this is not" entries: not a watermark
+  or detector, not a regulatory compliance mechanism.
+- README's illustrative example graphic (`assets/authorship-example.svg`) — a
+  single mocked-up reading (band, share bar, five per-stage indicators) so a
+  first-time reader sees what a declaration looks like before reading the
+  explanation.
+- README's short glossary distinguishing disclosure, detection, watermark,
+  C2PA-style provenance, "assessed vs. validated," and regulatory compliance.
+
 ### Changed
 - "About this scale" link (`METER_HOME`) now points at the repository rather than the
   Pages demo gallery, so it lands on the scale's definition.
@@ -29,6 +39,12 @@ spec, schema, or level→share mapping.
   fix to the linked `authorship-meter.js` propagates instead of being served stale
   from the Pages cache. (A more durable fix — versioned filenames — is on the
   backlog.)
+- README restructured: "What this is not" now follows "Why it matters" directly (its
+  natural counterpart), and "Add it to your project" absorbed "Getting a declaration
+  assessed" into one three-step flow (assess → confirm → publish the badge).
+- README's opening line no longer claims to be "honest" — that's not something a
+  format can assert about itself. It's now grounded in method: a structured,
+  LLM-assisted assessment against published criteria.
 
 ## [1.1.0] — 2026-08-04
 

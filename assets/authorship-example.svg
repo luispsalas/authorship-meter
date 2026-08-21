@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 150" width="480" height="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Illustrative example reading: band Co-created, Human 50%, AI 50%. Built from five separately assessed stages — Conception, Structure, Production, Curation, Verification — each shown as its own small indicator, rather than one guessed number.">
+  <text x="0" y="14" font-size="10" letter-spacing="1" fill="#9aa0aa">AUTHORSHIP · EXAMPLE</text>
+
+  <text x="0" y="42" font-size="22" font-weight="700" fill="#8a8a8a">Co-created</text>
+
+  <rect x="0" y="54" width="240" height="15" rx="4" fill="#2f9e78"/>
+  <rect x="240" y="54" width="240" height="15" rx="4" fill="#7d5fe0"/>
+  <text x="0" y="85" font-size="12" font-weight="600" fill="#2f9e78">Human 50%</text>
+  <text x="480" y="85" font-size="12" font-weight="600" fill="#7d5fe0" text-anchor="end">50% AI</text>
+
+  <text x="0" y="106" font-size="10.5" fill="#9aa0aa">Built from five separately assessed stages, not one guess:</text>
+
+  <!-- Conception — level 2 (human side) -->
+  <g transform="translate(0,116)">
+    <text x="44" y="0" font-size="9.5" fill="#888888" text-anchor="middle">Conception</text>
+    <rect x="0" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
+    <rect x="17" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
+    <rect x="34" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="51" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="68" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+  </g>
+
+  <!-- Structure — level 3 (co-created) -->
+  <g transform="translate(100,116)">
+    <text x="44" y="0" font-size="9.5" fill="#888888" text-anchor="middle">Structure</text>
+    <rect x="0" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="17" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="34" y="6" width="14" height="10" rx="2" fill="#6a6a70"/>
+    <rect x="51" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="68" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+  </g>
+
+  <!-- Production — level 4 (AI side) -->
+  <g transform="translate(200,116)">
+    <text x="44" y="0" font-size="9.5" fill="#888888" text-anchor="middle">Production</text>
+    <rect x="0" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="17" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="34" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="51" y="6" width="14" height="10" rx="2" fill="#7d5fe0"/>
+    <rect x="68" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+  </g>
+
+  <!-- Curation — level 2 (human side) -->
+  <g transform="translate(300,116)">
+    <text x="44" y="0" font-size="9.5" fill="#888888" text-anchor="middle">Curation</text>
+    <rect x="0" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
+    <rect x="17" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
+    <rect x="34" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="51" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="68" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+  </g>
+
+  <!-- Verification — level 2 (human side) -->
+  <g transform="translate(398,116)">
+    <text x="44" y="0" font-size="9.5" fill="#888888" text-anchor="middle">Verification</text>
+    <rect x="0" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
+    <rect x="17" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
+    <rect x="34" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="51" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+    <rect x="68" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
+  </g>
+</svg>
