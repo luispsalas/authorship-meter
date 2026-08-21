@@ -4,7 +4,7 @@ An at-a-glance scale for how much of a piece of work came from a person and how
 much from an AI model — built from a structured, LLM-assisted assessment across
 the stages of the process, not a single guessed number.
 
-![Illustrative example reading: band "Co-created", Human 50% / AI 50%, built from five separately assessed stages — Conception, Structure, Production, Curation, Verification, each shown as its own small indicator rather than folded into one guess.](assets/authorship-example.svg)
+![Illustrative example reading: headline band "Co-created", Human 50% / AI 50%, above five separately assessed stages — Conception, Structure, Production, Curation, Verification — each drawn as its own teal-human / violet-AI split bar, so the mix at each stage is visible rather than folded into one guess.](assets/authorship-example.svg)
 
 It's a voluntary disclosure, not a regulatory filing — see [What this is *not*](#what-this-is-not).
 

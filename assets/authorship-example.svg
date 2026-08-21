@@ -1,62 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 150" width="480" height="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Illustrative example reading: band Co-created, Human 50%, AI 50%. Built from five separately assessed stages — Conception, Structure, Production, Curation, Verification — each shown as its own small indicator, rather than one guessed number.">
-  <text x="0" y="14" font-size="10" letter-spacing="1" fill="#9aa0aa">AUTHORSHIP · EXAMPLE</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" width="560" height="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Illustrative example reading. Headline band: Co-created, Human 50% / AI 50%. Built from five separately assessed stages, each shown as its own teal/violet split bar — Conception 75% human, Structure 50/50, Production 25% human / 75% AI, Curation 75% human, Verification 75% human.">
+  <!-- brand mark: two-tone square -->
+  <rect x="28" y="21" width="7" height="14" rx="1" fill="#2f9e78"/>
+  <rect x="35" y="21" width="7" height="14" rx="1" fill="#7d5fe0"/>
+  <text x="50" y="33" font-size="10.5" letter-spacing="1.5" fill="#9aa0aa">AUTHORSHIP · EXAMPLE</text>
 
-  <text x="0" y="42" font-size="22" font-weight="700" fill="#8a8a8a">Co-created</text>
+  <!-- headline band -->
+  <text x="28" y="80" font-size="32" font-weight="700" fill="#808080">Co-created</text>
 
-  <rect x="0" y="54" width="240" height="15" rx="4" fill="#2f9e78"/>
-  <rect x="240" y="54" width="240" height="15" rx="4" fill="#7d5fe0"/>
-  <text x="0" y="85" font-size="12" font-weight="600" fill="#2f9e78">Human 50%</text>
-  <text x="480" y="85" font-size="12" font-weight="600" fill="#7d5fe0" text-anchor="end">50% AI</text>
+  <!-- main share bar -->
+  <rect x="28" y="98" width="252" height="18" rx="4" fill="#2f9e78"/>
+  <rect x="280" y="98" width="252" height="18" rx="4" fill="#7d5fe0"/>
+  <text x="28" y="134" font-size="12.5" font-weight="600" fill="#2f9e78">Human 50%</text>
+  <text x="532" y="134" font-size="12.5" font-weight="600" fill="#7d5fe0" text-anchor="end">50% AI</text>
 
-  <text x="0" y="106" font-size="10.5" fill="#9aa0aa">Built from five separately assessed stages, not one guess:</text>
+  <!-- by-stage caption -->
+  <text x="28" y="168" font-size="11" fill="#9aa0aa">By stage — the evidence behind the headline</text>
 
-  <!-- Conception — level 2 (human side) -->
-  <g transform="translate(0,116)">
-    <text x="44" y="0" font-size="9.5" fill="#888888" text-anchor="middle">Conception</text>
-    <rect x="0" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
-    <rect x="17" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
-    <rect x="34" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="51" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="68" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-  </g>
+  <!-- Conception — 75/25 -->
+  <text x="118" y="192" font-size="11.5" fill="#888888" text-anchor="end">Conception</text>
+  <rect x="130" y="183" width="301.5" height="11" rx="2.5" fill="#2f9e78"/>
+  <rect x="431.5" y="183" width="100.5" height="11" rx="2.5" fill="#7d5fe0"/>
 
-  <!-- Structure — level 3 (co-created) -->
-  <g transform="translate(100,116)">
-    <text x="44" y="0" font-size="9.5" fill="#888888" text-anchor="middle">Structure</text>
-    <rect x="0" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="17" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="34" y="6" width="14" height="10" rx="2" fill="#6a6a70"/>
-    <rect x="51" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="68" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-  </g>
+  <!-- Structure — 50/50 -->
+  <text x="118" y="216" font-size="11.5" fill="#888888" text-anchor="end">Structure</text>
+  <rect x="130" y="207" width="201" height="11" rx="2.5" fill="#2f9e78"/>
+  <rect x="331" y="207" width="201" height="11" rx="2.5" fill="#7d5fe0"/>
 
-  <!-- Production — level 4 (AI side) -->
-  <g transform="translate(200,116)">
-    <text x="44" y="0" font-size="9.5" fill="#888888" text-anchor="middle">Production</text>
-    <rect x="0" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="17" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="34" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="51" y="6" width="14" height="10" rx="2" fill="#7d5fe0"/>
-    <rect x="68" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-  </g>
+  <!-- Production — 25/75 -->
+  <text x="118" y="240" font-size="11.5" fill="#888888" text-anchor="end">Production</text>
+  <rect x="130" y="231" width="100.5" height="11" rx="2.5" fill="#2f9e78"/>
+  <rect x="230.5" y="231" width="301.5" height="11" rx="2.5" fill="#7d5fe0"/>
 
-  <!-- Curation — level 2 (human side) -->
-  <g transform="translate(300,116)">
-    <text x="44" y="0" font-size="9.5" fill="#888888" text-anchor="middle">Curation</text>
-    <rect x="0" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
-    <rect x="17" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
-    <rect x="34" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="51" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="68" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-  </g>
+  <!-- Curation — 75/25 -->
+  <text x="118" y="264" font-size="11.5" fill="#888888" text-anchor="end">Curation</text>
+  <rect x="130" y="255" width="301.5" height="11" rx="2.5" fill="#2f9e78"/>
+  <rect x="431.5" y="255" width="100.5" height="11" rx="2.5" fill="#7d5fe0"/>
 
-  <!-- Verification — level 2 (human side) -->
-  <g transform="translate(398,116)">
-    <text x="44" y="0" font-size="9.5" fill="#888888" text-anchor="middle">Verification</text>
-    <rect x="0" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
-    <rect x="17" y="6" width="14" height="10" rx="2" fill="#2f9e78"/>
-    <rect x="34" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="51" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-    <rect x="68" y="6" width="14" height="10" rx="2" fill="#8f8f8f" fill-opacity="0.3"/>
-  </g>
+  <!-- Verification — 75/25 -->
+  <text x="118" y="288" font-size="11.5" fill="#888888" text-anchor="end">Verification</text>
+  <rect x="130" y="279" width="301.5" height="11" rx="2.5" fill="#2f9e78"/>
+  <rect x="431.5" y="279" width="100.5" height="11" rx="2.5" fill="#7d5fe0"/>
 </svg>
