@@ -179,19 +179,27 @@
         "name": "This page",
         "type": "site",
         "source": "https://github.com/luispsalas/authorship-meter",
-        "version": "2026-07-30",
-        "updated": "2026-07-30"
+        "version": "d982992",
+        "updated": "2026-08-21"
       },
-      "assessed_at": "2026-07-30",
+      "assessed_at": "2026-08-21",
       "stages": {
         "conception":   { "level": 2, "note": "Metric model proposed in dialogue, decided by the author." },
-        "structure":    { "level": 3, "note": "Stage and level scheme worked out jointly." },
+        "structure":    { "level": 4, "note": "Author set coarse structural directives (reorder, merge, promote sections); the AI proposed and executed the actual reorganization — the SPEC §10/§11 split, the README restructure, the backlog architecture." },
         "production":   { "level": 4, "note": "Component and page generated to an agreed spec." },
-        "curation":     { "level": 2, "note": "Author reviewed and directed every revision." },
-        "verification": { "level": 2, "note": "Rendering and arithmetic checked in-browser before release." }
+        "curation":     { "level": 4, "note": "Author set revision criteria across many rounds (discard a phrase, fix visual crowding, match the README); the AI performed the actual rewrites and redesigns." },
+        "verification": { "level": 3, "note": "AI ran most mechanical verification (console, live-URL, anchor checks); the author independently caught real issues the automated checks missed, including a cramped hero layout and a wrong verification level." }
       },
-      "tools": ["Claude Opus 5"],
+      "tools": ["Claude Opus 5", "Claude Sonnet 5"],
       "declared_by": "Luis Salas",
+      "history": [
+        {
+          "assessed_at": "2026-07-30",
+          "band": "Co-created",
+          "composite": 2.6,
+          "reason": "Initial assessment, superseded after substantial additional work — v1.1 spec, two live adoptions, watermarking/C2PA/OKF research folded into SPEC, README/SPEC positioning refactor, demo page fixes — materially raised Structure, Curation, and Verification."
+        }
+      ],
       "method": "llm-assisted"
     }
     </script>
