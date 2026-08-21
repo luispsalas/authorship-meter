@@ -201,6 +201,14 @@ Several of these words now describe specific, different things. Worth being prec
 
 ---
 
+## Related
+
+Part of a small family of AI literacy and governance resources:
+[applied-ai-concepts](https://github.com/luispsalas/applied-ai-concepts) — foundational
+concepts behind designing, deploying, and governing AI systems.
+
+---
+
 ## License
 
 MIT.
