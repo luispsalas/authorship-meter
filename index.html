@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Authorship Meter</title>
+<meta name="description" content="An at-a-glance scale for how much of a piece of work came from a person and how much from an AI model — built from a structured, LLM-assisted assessment across the stages of the process.">
 <style>
   :root {
     --fg: #1c1c1e; --muted: #6a6a70; --bg: #fafafa; --card: #fff; --line: #e3e3e6;
@@ -45,10 +46,13 @@
 
   <h1>Authorship Meter</h1>
   <p class="lede">
-    A disclosure widget for showing, at a glance, how much of a piece of work came
-    from a person and how much came from a model — and at which stage.
+    An at-a-glance scale for how much of a piece of work came from a person and
+    how much from an AI model — built from a structured, LLM-assisted assessment
+    across the stages of the process, not a single guessed number.
   </p>
   <p class="lede" style="margin-top:-1.7rem;font-size:.95rem">
+    It's a voluntary disclosure, not a regulatory filing — see
+    <a href="https://github.com/luispsalas/authorship-meter/blob/main/README.md#what-this-is-not" style="color:inherit">what this is not</a>.
     This page carries its own <a href="#authorship" style="color:inherit">Authorship
     Meter declaration</a>, placed per §8 — intro line here, the meter itself at the
     foot of the content.
@@ -217,7 +221,8 @@
     </tbody>
   </table>
   <p style="color:var(--muted);font-size:13.5px">
-    Verification may not be declared level 5 — a human always signs off.
+    Someone has to be accountable for checking the work. There's no "fully AI"
+    option here — a person always signs off, so Verification never reaches level 5.
   </p>
 
   <h2>Using it</h2>
@@ -232,10 +237,15 @@
 
   <footer>
     Spec v1.1 ·
+    <a href="https://github.com/luispsalas/authorship-meter/blob/main/README.md" style="color:inherit">README</a> ·
     <a href="https://github.com/luispsalas/authorship-meter/blob/main/SPEC.md" style="color:inherit">SPEC.md</a> ·
     <a href="https://github.com/luispsalas/authorship-meter/blob/main/ASSESSMENT.md" style="color:inherit">ASSESSMENT.md</a> ·
+    <a href="https://github.com/luispsalas/authorship-meter/blob/main/INTEGRATION.md" style="color:inherit">INTEGRATION.md</a> ·
+    <a href="https://github.com/luispsalas/authorship-meter/blob/main/CHANGELOG.md" style="color:inherit">CHANGELOG.md</a> ·
     <a href="https://github.com/luispsalas/authorship-meter" style="color:inherit">Repository</a><br>
-    A declaration is a claim by its declarer. This is a disclosure format, not a quality mark.
+    A declaration is a claim by its declarer — not a watermark, a detector, or proof
+    of compliance. Full positioning is in the
+    <a href="https://github.com/luispsalas/authorship-meter/blob/main/README.md" style="color:inherit">README</a>.
   </footer>
 
 </main>
