@@ -5,10 +5,10 @@
     "type": "site",
     "url": "https://github.com/luispsalas/applied-ai-concepts",
     "source": "https://github.com/luispsalas/applied-ai-concepts",
-    "version": "v1.5.2 (65960e3)",
-    "updated": "2026-08-27"
+    "version": "v1.12 (c9d0ea1)",
+    "updated": "2026-08-31"
   },
-  "assessed_at": "2026-08-27",
+  "assessed_at": "2026-08-31",
   "stages": {
     "conception":   { "level": 2, "note": "The AI-literacy-plus-data-governance angle and the Karpathy 'compile, don't re-derive' framing were the author's; the model stress-tested scope and proposed term candidates against research gaps." },
     "structure":    { "level": 3, "note": "The multi-lens entry schema, the category taxonomy and the README section order were settled across many rounds of back-and-forth, with neither side owning the result." },
