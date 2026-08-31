@@ -6,3 +6,6 @@ node_modules/
 
 # Workspace-internal context — not part of the published project
 CONTEXT.md
+
+# Not published — staged accidentally once, keep out of add -A
+authorship-meter-playbook.md
