@@ -5,18 +5,36 @@
     "type": "site",
     "url": "https://github.com/luispsalas/applied-ai-concepts",
     "source": "https://github.com/luispsalas/applied-ai-concepts",
-    "version": "v1.17 (403385f)",
-    "updated": "2026-09-01"
+    "version": "v1.18 (ab3a4c0)",
+    "updated": "2026-09-02"
   },
-  "assessed_at": "2026-09-01",
+  "assessed_at": "2026-09-02",
   "stages": {
-    "conception":   { "level": 2, "note": "The AI-literacy-plus-data-governance angle and the Karpathy 'compile, don't re-derive' framing were the author's; the model stress-tested scope and proposed term candidates against research gaps." },
-    "structure":    { "level": 3, "note": "The multi-lens entry schema, the category taxonomy and the README section order were settled across many rounds of back-and-forth, with neither side owning the result." },
-    "production":   { "level": 4, "note": "Every concept entry plus the README, glossary and changelog prose was model-generated from author-set specs and vetted source sets, reviewed batch by batch before each push." },
-    "curation":     { "level": 4, "note": "The model ran every revision pass; the author scored each candidate term for inclusion and made the cut, fold and discard calls without editing the text directly." },
-    "verification": { "level": 3, "note": "The model checked sources and reconciled SRC-IDs against a maintained registry; the author set the sourcing standard, ruled on contested citations, and signs off before each publish." }
+    "conception": {
+      "level": 2,
+      "note": "The AI-literacy-plus-data-governance angle and the Karpathy 'compile, don't re-derive' framing were the author's; the model stress-tested scope and proposed term candidates against research gaps."
+    },
+    "structure": {
+      "level": 3,
+      "note": "The multi-lens entry schema, the category taxonomy and the README section order were settled across many rounds of back-and-forth, with neither side owning the result."
+    },
+    "production": {
+      "level": 4,
+      "note": "Every concept entry plus the README, glossary and changelog prose was model-generated from author-set specs and vetted source sets, reviewed batch by batch before each push."
+    },
+    "curation": {
+      "level": 4,
+      "note": "The model ran every revision pass; the author scored each candidate term for inclusion and made the cut, fold and discard calls without editing the text directly."
+    },
+    "verification": {
+      "level": 3,
+      "note": "The model checked sources and reconciled SRC-IDs against a maintained registry; the author set the sourcing standard, ruled on contested citations, and signs off before each publish."
+    }
   },
-  "tools": ["Claude Opus 5 (Anthropic)", "Claude Sonnet 5 (Anthropic)"],
+  "tools": [
+    "Claude Opus 5 (Anthropic)",
+    "Claude Sonnet 5 (Anthropic)"
+  ],
   "declared_by": "Luis Salas",
   "method": "llm-assisted"
 }
